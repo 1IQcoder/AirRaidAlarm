@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android", "web"],
+  "apple": {
+    "modules": ["AlarmKitModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.alarmkit.AlarmKitModule"]
+  }
+}
