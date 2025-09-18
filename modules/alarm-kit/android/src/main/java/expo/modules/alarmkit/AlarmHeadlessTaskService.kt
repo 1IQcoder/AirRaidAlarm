@@ -1,3 +1,5 @@
+package expo.modules.alarmkit
+
 import com.facebook.react.HeadlessJsTaskService
 import com.facebook.react.jstasks.HeadlessJsTaskConfig
 import com.facebook.react.bridge.Arguments

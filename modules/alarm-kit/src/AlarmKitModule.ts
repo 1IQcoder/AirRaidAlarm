@@ -21,8 +21,6 @@ declare class AlarmKitModule extends NativeModule<AlarmKitModuleEvents> {
   setAlarmWithCallback(timeInMillis: number, taskId: number): Promise<number>;
 
   showAlarmActivity(message: string): Promise<void>;
-  showActivityWithReactView(componentName: string): Promise<void>;
-
 }
 
 // This call loads the native module object from the JSI.

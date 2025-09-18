@@ -9,7 +9,8 @@ import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
 
-import expo.modules.alarmkit.ReactViewActivity
+import expo.modules.alarmkit.AlarmActivity
+import expo.modules.alarmkit.AlarmReceiver
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -74,7 +75,6 @@ class AlarmKitModule : Module() {
       return@AsyncFunction id
     }
 
-    // 👉 Отмена будильника
     AsyncFunction("cancelAlarm") { id: Int ->
       val context = appContext.reactContext ?: throw Exception("No React context")
       val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -93,7 +93,6 @@ class AlarmKitModule : Module() {
     AsyncFunction("vibrate") { duration: Long ->
       val context = appContext.reactContext ?: throw Exception("No React context")
 
-      // Для Android 12+ используем VibratorManager
       val vibrator = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
         val vm = context.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
         vm.defaultVibrator
@@ -140,17 +139,6 @@ class AlarmKitModule : Module() {
         flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
         putExtra("message", message)
       }
-      context.startActivity(intent)
-    }
-
-    AsyncFunction("showActivityWithReactView") { componentName: String ->
-      val context = appContext.reactContext ?: throw Exception("No React context")
-
-      val intent = Intent(context, ReactViewActivity::class.java).apply {
-        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-        putExtra(ReactViewActivity.EXTRA_COMPONENT_NAME, componentName)
-      }
-
       context.startActivity(intent)
     }
   }

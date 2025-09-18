@@ -13,16 +13,6 @@
       android:excludeFromRecents="true"
       android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
 
-    <activity
-      android:name=".ReactViewActivity"
-      android:exported="true"
-      android:launchMode="singleTask"
-      android:taskAffinity=""
-      android:excludeFromRecents="true"
-      android:showWhenLocked="true"
-      android:turnScreenOn="true"
-      android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen" />
-
     <service
       android:name=".AlarmHeadlessTaskService"
       android:exported="false" />

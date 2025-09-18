@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.content.ContextCompat
 
+import expo.modules.alarmkit.AlarmHeadlessTaskService
+
 class AlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val taskId = intent.getIntExtra("taskId", -1)
